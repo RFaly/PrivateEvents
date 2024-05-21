@@ -1,0 +1,34 @@
+<h1><%= @event.title %></h1>
+<p class="mb-1">Location: <%= @event.location %></p>
+<p class="mb-1">Date: <%= @event.date %></p>
+<p class="mb-1">Creator: <%= @event.creator.email %></p>
+
+<h2>Attendees</h2>
+<ul class="list-group">
+  <% @event.attendees.each do |attendee| %>
+    <li class="list-group-item"><%= attendee.email %></li>
+  <% end %>
+</ul>
+
+<div class="my-2">
+  <% if user_signed_in? %>
+    <% unless @event.attendees.include?(current_user) %>
+      <%= link_to "Attend Event", attend_event_path(@event), data: {
+        turbo_method: :post
+      }, class: "btn btn-primary", method: :delete %>
+    <% else %>
+      <%= link_to "Unattend Event", unattend_event_path(@event), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      }, class: "btn btn-danger", method: :delete %>
+    <% end %>
+  <% end %>
+
+  <% if user_signed_in? && @event.creator == current_user %>
+    <%= link_to 'Edit Event', edit_event_path(@event), class: "btn btn-secondary" %>
+    <%= link_to "Delete Event", event_path(@event), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    }, class: "btn btn-danger", method: :delete %>
+  <% end %>
+</div>

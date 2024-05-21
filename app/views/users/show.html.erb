@@ -1,0 +1,19 @@
+<h1><%= @user.email %>'s Profile</h1>
+
+<h2>Created Events</h2>
+<dl class="row">
+  <% @created_events.each do |event| %>
+    <dt class="col-sm-3"><%= link_to event.title, event %></dt>
+    <dd class="col-sm-9">Date: <%= event.date %></dd>
+  <% end %>
+</dl>
+
+<h2>Attended Events</h2>
+<dl class="row">
+  <% @attended_events.each do |event| %>
+    <dt class="col-sm-3"><%= link_to event.title, event %></dt>
+    <dd class="col-sm-9">Date: <%= event.date %></dd>
+  <% end %>
+</dl>
+
+# TODO: Have the User’s Show page list all the events a user has created.

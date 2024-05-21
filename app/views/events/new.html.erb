@@ -1,0 +1,19 @@
+<h1>New Event</h1>
+<%= form_with(model: @event, local: true, html: { class: 'needs-validation', novalidate: true }) do |form| %>
+  <div class="mb-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control', required: true %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :date, class: 'form-label' %>
+    <%= form.datetime_select :date, {}, { class: 'form-control', required: true } %>
+  </div>
+  <hr/>
+  <div class="mb-3">
+    <%= form.label :location, class: 'form-label' %>
+    <%= form.text_field :location, class: 'form-control', required: true %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit 'Create Event', class: 'btn btn-primary' %>
+  </div>
+<% end %>

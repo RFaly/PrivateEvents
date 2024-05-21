@@ -1,0 +1,17 @@
+<h1>All Events</h1>
+
+<h2>Upcoming Events</h2>
+<dl class="row">
+  <% @upcoming_events.each do |event| %>
+    <dt class="col-sm-3"><%= link_to event.title, event %></dt>
+    <dd class="col-sm-9">Date: <%= event.date %></dd>
+  <% end %>
+</dl>
+
+<h2>Past Events</h2>
+<dl class="row">
+  <% @past_events.each do |event| %>
+    <dt class="col-sm-3"><%= link_to event.title, event %></dt>
+    <dd class="col-sm-9">Date: <%= event.date %></dd>
+  <% end %>
+</dl>

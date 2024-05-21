@@ -1,0 +1,18 @@
+<h1>Edit Event</h1>
+<%= form_with(model: @event, local: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :date, class: 'form-label' %>
+    <%= form.datetime_select :date, {}, { class: 'form-control' } %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :location, class: 'form-label' %>
+    <%= form.text_field :location, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit 'Update Event', class: 'btn btn-primary' %>
+  </div>
+<% end %>
